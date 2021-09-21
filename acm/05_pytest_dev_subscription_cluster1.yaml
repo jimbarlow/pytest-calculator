@@ -2,7 +2,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
 metadata:
   name: pytest-calculator-dev-deployment-cluster1
-  namespace: pytest-calculator
+  namespace: pytest-dev
   labels:
     deployment: pytest-calculator-dev-deployment
   annotations:

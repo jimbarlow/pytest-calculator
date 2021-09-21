@@ -3,7 +3,7 @@ apiVersion: apps.open-cluster-management.io/v1
 kind: PlacementRule
 metadata:
   name: local-cluster
-  namespace: pytest-calculator
+  namespace: pytest-dev
 spec:
   clusterSelector:
     matchLabels:
