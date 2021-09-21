@@ -8,3 +8,4 @@ resources:
 - pytest-dev-deployment.yml
 - pytest-dev-route.yml
 - pytest-dev-rolebinding.yml
+- pytest-dev-prod-rolebinding.yml
