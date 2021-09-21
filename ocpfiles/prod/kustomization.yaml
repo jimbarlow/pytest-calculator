@@ -1,0 +1,4 @@
+
+resources:
+- prod-service-account.yaml
+- pytest-prod-deployment-template.yml

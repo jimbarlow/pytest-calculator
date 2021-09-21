@@ -1,0 +1,5 @@
+
+resources:
+- dev-service-account.yaml
+- pytest-dev-build-template.yml
+- pytest-dev-deployment-template.yml
