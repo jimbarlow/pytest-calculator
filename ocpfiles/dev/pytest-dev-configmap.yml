@@ -1,0 +1,9 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: pytest-calculator
+  namespace: pytest-dev
+  labels:
+    app: pytest-calculator
+data:
+  PYTEST_ENVIRONMENT: dev

@@ -3,3 +3,6 @@ resources:
 - dev-service-account.yaml
 - pytest-dev-build-image-stream.yml
 - pytest-dev-build-build-config.yml
+- pytest-dev-configmap.yml
+- pytest-dev-service.yml
+- pytest-dev-deployment.yml

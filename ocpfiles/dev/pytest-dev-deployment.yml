@@ -1,0 +1,76 @@
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: pytest-calculator
+  namespace: pytest-dev
+  labels:
+    app: pytest-calculator
+spec:
+  strategy:
+    type: Rolling
+    rollingParams:
+      updatePeriodSeconds: 1
+      intervalSeconds: 1
+      timeoutSeconds: 600
+      maxUnavailable: 25%
+      maxSurge: 25%
+    resources: {}
+    activeDeadlineSeconds: 21600
+  triggers:
+    - type: ConfigChange
+    - type: ImageChange
+      imageChangeParams:
+        containerNames:
+          - pytest-calculator
+        from:
+          kind: ImageStreamTag
+          namespace: pytest-dev
+          name: 'pytest-calculator:latest'
+  replicas: 1
+  revisionHistoryLimit: 10
+  test: false
+  selector:
+    app: pytest-calculator
+  template:
+    metadata:
+      namespace: pytest-dev
+      creationTimestamp: null
+      labels:
+        app: pytest-calculator
+    spec:
+      containers:
+        - name: pytest-calculator
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: PYTEST_ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: pytest-calculator
+                  key: PYTEST_ENVIRONMENT
+          resources:
+            limits:
+              cpu: 200m
+              memory: 200Mi
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          livenessProbe:
+            exec:
+              command:
+                - pytest
+                - ./calc/tests/liveness-test.py
+            initialDelaySeconds: 60
+            timeoutSeconds: 45
+            periodSeconds: 60
+            successThreshold: 1
+            failureThreshold: 4
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: Always
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      dnsPolicy: ClusterFirst
+      securityContext: {}
+      schedulerName: default-scheduler
