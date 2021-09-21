@@ -1,7 +1,11 @@
 kind: ImageStream
+apiVersion: image.openshift.io/v1
 metadata:
+  name: pytest-calculator
+  namespace: pytest-dev
   labels:
     app: pytest-calculator
     application: pytest-calculator
-  name: pytest-calculator
-spec: {}
+spec:
+  lookupPolicy:
+    local: false
