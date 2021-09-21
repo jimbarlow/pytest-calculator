@@ -1,5 +1,7 @@
 
 resources:
+- pytest-dev-namespace.yaml
+- pytest-prod-namespace.yaml
 - dev-service-account.yaml
 - prod-service-account.yaml
 - pytest-dev-build-template.yml
