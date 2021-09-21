@@ -9,7 +9,7 @@ metadata:
     apps.open-cluster-management.io/github-branch: master
     apps.open-cluster-management.io/github-path: clusters/dev/cluster1
 spec:
-  channel:  pytest-calculator/pytest-calculator-channel
+  channel:  pytest-dev-channel/pytest-calculator-channel
   placement: 
     placementRef: 
       kind: PlacementRule
