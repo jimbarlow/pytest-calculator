@@ -1,0 +1,8 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Channel
+metadata:
+  name: pytest-calculator-channel
+  namespace: pytest-calculator
+spec:
+  pathname: 'https://github.com/tosin2013/pytest-calculator.git'
+  type: GitHub
