@@ -2,6 +2,7 @@ kind: Template
 apiVersion: v1
 metadata:
   name: pytest-calculator-dev-deployment-template
+  namespace: pytest-dev
 parameters:
   - description: The name for the application.
     displayName: Application Name
@@ -23,6 +24,7 @@ objects:
       name: ${APPLICATION_NAME}
       labels:
         app: ${APPLICATION_NAME}
+      namespace: pytest-dev
     spec:
       strategy:
         type: Rolling
@@ -52,6 +54,7 @@ objects:
         metadata:
           labels:
             app: ${APPLICATION_NAME}
+          namespace: pytest-dev
         spec:
           containers:
           - env:
@@ -88,6 +91,7 @@ objects:
       name: ${APPLICATION_NAME}
       labels:
         app: ${APPLICATION_NAME}
+      namespace: pytest-dev
     spec:
       ports:
         - name: 8080-tcp

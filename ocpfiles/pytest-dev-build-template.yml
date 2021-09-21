@@ -2,6 +2,7 @@ kind: Template
 apiVersion: v1
 metadata:
   name: pytest-dev-build-template
+  namespace: pytest-dev
 parameters:
   - name: SOURCE_REPOSITORY_URL
     displayName: Source Repository URL
