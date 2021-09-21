@@ -1,0 +1,9 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: pytest-calculator
+  namespace: pytest-prod
+  labels:
+    app: pytest-calculator
+data:
+  PYTEST_ENVIRONMENT: prod
