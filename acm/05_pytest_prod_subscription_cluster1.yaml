@@ -1,13 +1,13 @@
 apiVersion: apps.open-cluster-management.io/v1
 kind: Subscription
 metadata:
-  name: pytest-calculator-dev-deployment-cluster1
+  name: pytest-calculator-prod-deployment-cluster1
   namespace: pytest-prod
   labels:
-    deployment: pytest-calculator-dev-deployment
+    deployment: pytest-calculator-prod-deployment
   annotations:
     apps.open-cluster-management.io/github-branch: master
-    apps.open-cluster-management.io/github-path: clusters/dev/cluster1
+    apps.open-cluster-management.io/github-path: clusters/prod/cluster1
 spec:
   channel:  pytest-prod/pytest-prod-channel
   placement: 
