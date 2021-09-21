@@ -1,0 +1,17 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: pytest-calculator
+  namespace: pytest-dev
+  labels:
+    app: pytest-calculator
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  to:
+    kind: Service
+    name: pytest-calculator
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  wildcardPolicy: None
