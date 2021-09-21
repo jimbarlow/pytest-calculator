@@ -1,29 +1,32 @@
 kind: BuildConfig
+apiVersion: build.openshift.io/v1
 metadata:
+  name: pytest-calculator
+  namespace: pytest-dev
   labels:
     app: pytest-calculator
     build: pytest-calculator
-  name: pytest-calculator
 spec:
-  failedBuildsHistoryLimit: 2
   nodeSelector: null
   output:
     to:
       kind: ImageStreamTag
-      name: pytest-calculator:latest
+      name: 'pytest-calculator:latest'
   resources: {}
-  runPolicy: Serial
-  source:
-    git:
-      ref: master
-      uri: https://github.com/bfarr-rh/pytest-calculator.git
-    type: Git
+  successfulBuildsHistoryLimit: 2
+  failedBuildsHistoryLimit: 2
   strategy:
+    type: Source
     sourceStrategy:
       from:
         kind: DockerImage
         name: registry.redhat.io/rhel8/python-38
-    type: Source
-  successfulBuildsHistoryLimit: 2
+  postCommit: {}
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/bfarr-rh/pytest-calculator.git'
+      ref: master
   triggers:
-  - type: ConfigChange
+    - type: ConfigChange
+  runPolicy: Serial
