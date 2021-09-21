@@ -1,0 +1,7 @@
+kind: ImageStream
+metadata:
+  labels:
+    app: pytest-calculator
+    application: pytest-calculator
+  name: pytest-calculator
+spec: {}

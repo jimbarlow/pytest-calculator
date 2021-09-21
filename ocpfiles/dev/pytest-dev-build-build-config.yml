@@ -1,0 +1,29 @@
+kind: BuildConfig
+metadata:
+  labels:
+    app: pytest-calculator
+    build: pytest-calculator
+  name: pytest-calculator
+spec:
+  failedBuildsHistoryLimit: 2
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: pytest-calculator:latest
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      ref: master
+      uri: https://github.com/bfarr-rh/pytest-calculator.git
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: DockerImage
+        name: registry.redhat.io/rhel8/python-38
+    type: Source
+  successfulBuildsHistoryLimit: 2
+  triggers:
+  - type: ConfigChange
