@@ -9,3 +9,4 @@ resources:
 - pytest-dev-route.yml
 - pytest-dev-rolebinding.yml
 - pytest-dev-prod-rolebinding.yml
+- pytest-dev-systemimage-puller.yaml
