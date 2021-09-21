@@ -1,0 +1,10 @@
+
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: cluster1
+  namespace: pytest-prod
+spec:
+  clusterSelector:
+    matchLabels:
+      clusterid: cluster1

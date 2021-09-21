@@ -25,6 +25,6 @@ oc create -f acm/04_pytest_dev_placement_local_cluster.yaml
 ```
 
 **Create subscription rule for local cluster**
-``
+```
 oc create -f acm/05_pytest_dev_subscription_local_cluster.yaml 
-``
+```
