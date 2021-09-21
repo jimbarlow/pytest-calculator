@@ -1,3 +1,5 @@
 
 resources:
 - prod-service-account.yaml
+- pytest-dev-prod-rolebinding.yml
+- pytest-prod-rolebinding.yml
