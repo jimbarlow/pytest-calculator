@@ -1,0 +1,16 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: pytest-calculator-deployment-local-cluster
+  namespace: pytest-calculator
+  labels:
+    deployment: pytest-calculator-deployment
+  annotations:
+    apps.open-cluster-management.io/github-branch: master
+    apps.open-cluster-management.io/github-path: clusters/local-cluster
+spec:
+  channel:  pytest-calculator/pytest-calculator-channel
+  placement: 
+    placementRef: 
+      kind: PlacementRule
+      name: local-cluster
