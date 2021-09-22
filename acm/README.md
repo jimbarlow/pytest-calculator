@@ -1,5 +1,13 @@
 # ACM Configs for pytest-calculator
 
+## Requirements 
+**Confirm target clusters are properly labeled**
+> the local-cluster does not need to be checked
+*  `clusterid=cluster1`
+*  `clusterid=cluster2`
+*  `clusterid=cluster3`
+*  `clusterid=...`
+
 ## pytest development deployment 
 
 **Create namespace for dev environment**
