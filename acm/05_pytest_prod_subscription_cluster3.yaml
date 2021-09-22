@@ -1,0 +1,16 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: pytest-calculator-prod-deployment-cluster3
+  namespace: pytest-prod
+  labels:
+    deployment: pytest-calculator-prod-deployment
+  annotations:
+    apps.open-cluster-management.io/github-branch: master
+    apps.open-cluster-management.io/github-path: clusters/prod/cluster3
+spec:
+  channel:  pytest-prod/pytest-prod-channel
+  placement: 
+    placementRef: 
+      kind: PlacementRule
+      name: cluster3
