@@ -18,8 +18,9 @@ oc create -f acm/03_pytest_dev_application.yaml
 ```
 
 ### Deploy to local-cluster (ACM HUB)
+![20210921225544](https://i.imgur.com/30qHilc.png)
 **Deploy pytest-calculator dev environment to local cluster**
-![20210921154114](https://i.imgur.com/q0cloJF.png)
+
 **Create Placement rule for local cluster**
 ```
 oc create -f acm/04_pytest_dev_placement_local_cluster.yaml 
@@ -31,7 +32,7 @@ oc create -f acm/05_pytest_dev_subscription_local_cluster.yaml
 ```
 
 ## pytest production deployment 
-
+![20210921225514](https://i.imgur.com/DxHKVyD.png)
 **Create namespace for prod environment**
 ```
 oc create -f acm/01_pytest_prod_namespace.yaml
