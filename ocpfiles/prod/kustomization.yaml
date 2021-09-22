@@ -6,3 +6,4 @@ resources:
 - pytest-dev-configmap.yml
 - pytest-dev-deployment.yml
 - pytest-dev-service.yml
+- pytest-prod-route.yml
