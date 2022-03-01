@@ -32,9 +32,6 @@ steps:
     connectionType: 'OpenShift Connection Service'
     openshiftService: 'pytest-dev-sa'
     cmd: 'start-build pytest-calculator --from-dir=/home/vsts/work/1/s --follow'
-- task: Bash@3
-  inputs:
-    filePath: 'scripts/rox-image-check.sh'
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
@@ -48,7 +45,7 @@ steps:
 - task: oc-setup@2
   inputs:
     openshiftService: 'pytest-dev-sa'
-    version: '4.3'
+    version: '4.9'
 - script: |
     sleep 90
     echo "Waiting for pod redeployment"
