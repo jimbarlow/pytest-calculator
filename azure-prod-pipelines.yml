@@ -12,7 +12,7 @@ steps:
 
 - task: oc-setup@2
   inputs:
-    openshiftService: 'pytest-dev-sa'
+    openshiftService: 'cluster2-aro-dev'
     version: 'https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable-4.10/openshift-client-linux.tar.gz'
 - script: |
     oc status
