@@ -45,7 +45,7 @@ steps:
 - task: oc-setup@2
   inputs:
     openshiftService: 'pytest-dev-sa'
-    version: '4.9'
+    version: '4.10'
 - script: |
     sleep 90
     echo "Waiting for pod redeployment"
