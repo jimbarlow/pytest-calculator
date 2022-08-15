@@ -1,0 +1,62 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+- task: oc-cmd@2
+  inputs:
+    connectionType: 'OpenShift Connection Service'
+    openshiftService: 'pytest-dev-sa'
+    cmd: 'status'
+- task: oc-cmd@2
+  inputs:
+    connectionType: 'OpenShift Connection Service'
+    openshiftService: 'pytest-dev-sa'
+    cmd: 'project pytest-dev'
+- task: oc-cmd@2
+  inputs:
+    connectionType: 'OpenShift Connection Service'
+    openshiftService: 'pytest-dev-sa'
+    cmd: 'start-build pytest-calculator --from-dir=/home/vsts/work/1/s --follow'
+- task: oc-cmd@2
+  inputs:
+    connectionType: 'OpenShift Connection Service'
+    openshiftService: 'pytest-dev-sa'
+    cmd: 'rollout latest dc/pytest-calculator'
+- task: oc-cmd@2
+  inputs:
+    connectionType: 'OpenShift Connection Service'
+    openshiftService: 'pytest-dev-sa'
+    cmd: 'rollout status dc pytest-calculator'
+- task: oc-setup@2
+  inputs:
+    connectionType: 'OpenShift Connection Service'
+    openshiftService: 'pytest-dev-sa'
+    version: 'https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable-4.10/openshift-client-linux.tar.gz'
+- script: |
+    sleep 90
+    echo "Waiting for pod redeployment"
+    POD_NAME=`oc get pods -l app=pytest-calculator -o jsonpath='{range .items[0].metadata}{.name}{"\n"}{end}'`
+    echo $POD_NAME
+    oc exec $POD_NAME -- pytest --junitxml=junit.xml
+    oc rsync $POD_NAME:/opt/app-root/src/junit.xml $(System.DefaultWorkingDirectory)
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/junit.xml'
+    failTaskOnFailedTests: true
+    testRunTitle: 'Published results'
