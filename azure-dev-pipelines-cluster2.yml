@@ -20,32 +20,32 @@ steps:
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
-    openshiftService: 'pytest-dev-sa'
+    openshiftService: 'cluster2-aro-dev'
     cmd: 'status'
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
-    openshiftService: 'pytest-dev-sa'
+    openshiftService: 'cluster2-aro-dev'
     cmd: 'project pytest-dev'
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
-    openshiftService: 'pytest-dev-sa'
+    openshiftService: 'cluster2-aro-dev'
     cmd: 'start-build pytest-calculator --from-dir=/home/vsts/work/1/s --follow'
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
-    openshiftService: 'pytest-dev-sa'
+    openshiftService: 'cluster2-aro-dev'
     cmd: 'rollout latest dc/pytest-calculator'
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
-    openshiftService: 'pytest-dev-sa'
+    openshiftService: 'cluster2-aro-dev'
     cmd: 'rollout status dc pytest-calculator'
 - task: oc-setup@2
   inputs:
     connectionType: 'OpenShift Connection Service'
-    openshiftService: 'pytest-dev-sa'
+    openshiftService: 'cluster2-aro-dev'
     version: 'https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable-4.10/openshift-client-linux.tar.gz'
 - script: |
     sleep 90
